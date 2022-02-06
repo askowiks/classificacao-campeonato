@@ -1,7 +1,6 @@
 package br.com.askowiks.classificacaocampeonatofutebol;
 
 import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +18,6 @@ public class Main {
         }
 
         Map<String, Integer> placar = new LinkedHashMap<>();
-
         List<Clube> clubes = new ArrayList<>();
 
         for (int indice = 1; indice < lines.size(); indice++) {
@@ -30,8 +28,6 @@ public class Main {
             partida.setVisitante(conteudoLinha[1]);
 
             //Criando LocalDate a partir de um padrão de data específico
-            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
-            //LocalDate localDate = LocalDate.parse(conteudoLinha[4], formatter);
             LocalDate localDate = LocalDate.parse(conteudoLinha[4]);
             partida.setData(localDate);
             partida.setGolsMandante(conteudoLinha[2]);
@@ -122,18 +118,9 @@ public class Main {
             }
         }
 
-//        placar.forEach((chave, pontuacao) -> {
-//            System.out.println("time: " + chave + "- pontuação: " + pontuacao);
-//        });
-
-//        clubes.forEach(clube -> {
-//            System.out.println(clube);
-//        });
-
-
         clubes.forEach(clube -> {
             File file = new File("C:\\partidasfutebol\\" + clube.getNome() + ".txt");
-
+            Collections.sort(clube.getPartidas());
             StringBuilder texto = new StringBuilder();
             clube.getPartidas().forEach(partida -> {
                 texto.append(partida.getData().format(DateTimeFormatter.ofPattern("dd/MM/yy")));
@@ -153,7 +140,6 @@ public class Main {
             } catch (Exception e) {
                 System.out.println("Erro ao criar arquivo.");
             }
-
         });
 
         Collections.sort(clubes);
@@ -181,7 +167,5 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Erro ao criar arquivo.");
         }
-//
-
     }
 }

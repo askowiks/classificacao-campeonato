@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-public class Partida {
+public class Partida implements Comparable<Partida>{
     private String mandante;
     private String visitante;
     private int golsMandante;
@@ -41,6 +41,7 @@ public class Partida {
             return ResultadoPartida.EMPATE;
         }else return ResultadoPartida.DERROTA;
     }
+
     public ResultadoPartida getResultadoVisitante(){
         if (golsMandante < golsVisitante) {
             return ResultadoPartida.VITORIA;
@@ -49,4 +50,7 @@ public class Partida {
         }else return ResultadoPartida.DERROTA;
     }
 
+    public int compareTo(Partida outraPartida) {
+        return data.compareTo(outraPartida.data);
+    }
 }

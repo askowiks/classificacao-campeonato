@@ -17,8 +17,6 @@ public class Clube implements Comparable<Clube> {
     private int pontuacaoFinal;
     private List<Partida> partidas = new ArrayList<>();
 
-
-
     public int compareTo(Clube outroClube) {
         return Integer.compare(outroClube.pontuacaoFinal, pontuacaoFinal);
     }
