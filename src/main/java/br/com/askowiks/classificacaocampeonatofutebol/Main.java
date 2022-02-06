@@ -122,17 +122,17 @@ public class Main {
             }
         }
 
-        placar.forEach((chave, pontuacao) -> {
-            System.out.println("time: " + chave + "- pontuação: " + pontuacao);
-        });
+//        placar.forEach((chave, pontuacao) -> {
+//            System.out.println("time: " + chave + "- pontuação: " + pontuacao);
+//        });
+
+//        clubes.forEach(clube -> {
+//            System.out.println(clube);
+//        });
+
 
         clubes.forEach(clube -> {
-            System.out.println(clube);
-        });
-
-
-        clubes.forEach(clube -> {
-            File file = new File("C:\\partidasfutebol\\" + clube.getNome() + ".csv");
+            File file = new File("C:\\partidasfutebol\\" + clube.getNome() + ".txt");
 
             StringBuilder texto = new StringBuilder();
             clube.getPartidas().forEach(partida -> {
@@ -156,6 +156,7 @@ public class Main {
 
         });
 
+        Collections.sort(clubes);
         File file = new File("C:\\partidasfutebol\\classificacaofinal.csv");
         StringBuilder texto = new StringBuilder();
         texto.append("Time;Vitorias;Empates;Derrotas;Pontos\n");
@@ -176,7 +177,6 @@ public class Main {
         System.out.println("\nArquivo classificaçãofinal criado com sucesso!");
 
         try {
-
             FileUtils.write(file, texto.toString(), "UTF8");
         } catch (Exception e) {
             System.out.println("Erro ao criar arquivo.");

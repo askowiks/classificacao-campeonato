@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class Clube {
+public class Clube implements Comparable<Clube> {
     private String nome;
     private int vitorias;
     private int empates;
@@ -17,4 +17,9 @@ public class Clube {
     private int pontuacaoFinal;
     private List<Partida> partidas = new ArrayList<>();
 
+
+
+    public int compareTo(Clube outroClube) {
+        return Integer.compare(outroClube.pontuacaoFinal, pontuacaoFinal);
+    }
 }
