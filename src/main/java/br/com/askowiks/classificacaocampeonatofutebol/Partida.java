@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -53,4 +54,14 @@ public class Partida implements Comparable<Partida>{
     public int compareTo(Partida outraPartida) {
         return data.compareTo(outraPartida.data);
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (!(o instanceof Partida)) return false;
+        Partida partida = (Partida) o;
+        return Objects.equals(mandante, partida.mandante) && Objects.equals(visitante, partida.visitante) && Objects.equals(data, partida.data);
+    }
+
+
 }

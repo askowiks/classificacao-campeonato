@@ -19,6 +19,8 @@ public class Main {
 
         Map<String, Integer> placar = new LinkedHashMap<>();
         List<Clube> clubes = new ArrayList<>();
+        Partida partidaAnterior = null;
+
 
         for (int indice = 1; indice < lines.size(); indice++) {
             String linha = lines.get(indice);
@@ -32,6 +34,12 @@ public class Main {
             partida.setData(localDate);
             partida.setGolsMandante(conteudoLinha[2]);
             partida.setGolsVisitante(conteudoLinha[3]);
+
+            if (partida.equals(partidaAnterior)){
+                continue;
+            } else {
+                partidaAnterior = partida;
+            }
 
             int pontuacaoFinalMandante = partida.getResultadoMandante().getValor();
             int pontuacaoFinalVisitante = partida.getResultadoVisitante().getValor();
@@ -53,7 +61,7 @@ public class Main {
                                 break;
                         }
                         clube.setPontuacaoFinal(pontuacaoFinalMandante);
-                        clube.getPartidas().add(partida);
+                        clube.addPartida(partida);
                         break;
                     }
                 }
@@ -73,7 +81,7 @@ public class Main {
                         break;
                 }
                 clube.setPontuacaoFinal(pontuacaoFinalMandante);
-                clube.getPartidas().add(partida);
+                clube.addPartida(partida);
                 clubes.add(clube);
             }
             //O placar atual já contém o visitante atual?

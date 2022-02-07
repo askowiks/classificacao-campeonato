@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -20,4 +21,10 @@ public class Clube implements Comparable<Clube> {
     public int compareTo(Clube outroClube) {
         return Integer.compare(outroClube.pontuacaoFinal, pontuacaoFinal);
     }
+
+    public void addPartida(Partida partida) {
+            partidas.add(partida);
+
+    }
+
 }
