@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         List<String> lines = new ArrayList<>();
         try {
-            File file = new File("C:\\partidasfutebol\\partidasfutebol.csv");
+            File file = new File("C:\\partidasfutebol\\championshipResult2022.csv");
             lines = FileUtils.readLines(file, "UTF-8");
         } catch (Exception e) {
             System.out.println("Erro");
@@ -119,7 +119,7 @@ public class Main {
         }
 
         clubes.forEach(clube -> {
-            File file = new File("C:\\partidasfutebol\\" + clube.getNome() + ".txt");
+            File file = new File("C:\\partidasfutebol\\resultados\\" + clube.getNome() + ".txt");
             Collections.sort(clube.getPartidas());
             StringBuilder texto = new StringBuilder();
             clube.getPartidas().forEach(partida -> {
@@ -143,7 +143,7 @@ public class Main {
         });
 
         Collections.sort(clubes);
-        File file = new File("C:\\partidasfutebol\\classificacaofinal.csv");
+        File file = new File("C:\\partidasfutebol\\resultados\\classificacaofinal.csv");
         StringBuilder texto = new StringBuilder();
         texto.append("Time;Vitorias;Empates;Derrotas;Pontos\n");
         clubes.forEach(clube -> {
